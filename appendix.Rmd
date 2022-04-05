@@ -1,0 +1,76 @@
+---
+title: ''
+output: pdf_document
+---
+# Appendix(ces)
+
+## Appendix A: additional tables 
+
+Appear the end of the document, often after references;  
+
+1. You should create one appendix for each topic, e.g. additional tables, additional figures, code, etc.    
+2. Each should start on a new page;  
+3. If there are multiple appendices in your document, there should be labelled with letters, and usually accompanied by a title that clarifies their content;  
+4. Appendices are also included in the table of contents at the beginning of the main document.   
+5. We are going to follow these formatting rules and we are going to explore three types of appendices: additional tables, additional figures and code (used for programming during your research).  
+
+Insert content for additional tables here.
+
+```{r open data and libraries, include = F} 
+## ote: include=F in the {} makes sure that neither code chunk nor output is shown in the pdf output. 
+
+library(knitr)  # for dynamic report generation
+library(kableExtra) # to build complex HTML or 'LaTex' tables
+library(tidyverse) # for data manipulation
+library(here)
+
+puffins_t <- read.csv("./data/puffins_temp.csv")
+                      # to open the file puffins_temp.csv
+
+# library(readr)
+# puffins_temp <- read_csv("CC-diss-rmd/data/puffins_temp.csv")
+# 
+
+
+puffins_t <- puffins_t %>%
+  rename("Year" = year, "Country list" = Country.list,
+         "Population trend" = pop_trend, "ID" = id,
+         "Mean max. T (°C)" = mean_tmax, "Mean min. T (°C)" = mean_tmin)  
+            # A bit of data transformation! "New name" = Old.name
+``` 
+
+kableExtra is a package that uses kable() and pipes from the Tidyverse package, to build complex and professional tables. We are going to use one example for the sake of this tutorial, but if you wish to explore further on the large variety of features that kableExtra can offer, have a look at its manual. Moreover, kableExtra is often combined with viridisLite package, for using smoother colour scales.
+
+
+```{r table1, echo=F}
+puffins_t %>%
+  slice(1:10) %>%   # the table is going to show only the first 10 lines (a sample of the data set)
+  kable(digits = 2) %>% # each value has 2 decimal digits
+  kable_styling(full_width = F, # the width of the table is not fit to the width of the page
+                position = "center", font_size = 10,
+                latex_options = "hold_position")  # table settings with the kableExtra package
+```
+
+\newpage
+
+## Appendix B: additional figures
+
+Insert content for additional figures here. 
+
+```{r path-to-folder plots fixed size, echo = FALSE, out.height="40%", fig.show='hold', fig.align="center",  fig.cap="Additional images in Appendix B"} 
+
+# 'include_graphics() ‘knitr’ package,  allows to embed external images in document format supported by ‘knitr’.
+
+include_graphics("img/meant_plot.png")
+```
+
+\newpage
+
+## Appendix C: code
+
+Insert code (if any) used during your dissertation work here.  
+
+Making the code available in the appendix favours the transparency and replicability of your work.  
+
+```{r ref.label=knitr::all_labels(), echo=TRUE, eval=FALSE}
+```

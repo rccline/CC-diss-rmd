@@ -1,0 +1,150 @@
+---
+title: " "
+output:
+  pdf_document:
+    number_sections: TRUE
+geometry: "left = 2.5cm, right = 2cm, top = 2cm, bottom = 2cm"
+fontsize: 11pt
+header-includes:
+  - \usepackage{float} # improvesinterface of floating objects, figures and tables;
+  - \usepackage{sectsty} # helps change style of sectional headers
+  - \usepackage{paralist} #enumerate and itemise environmentss
+  - \usepackage{setspace}\spacing{1.5} # spacing between lines \singlespaceing \doublespading 
+  - \usepackage{fancyhdr} # headers & footers
+  - \usepackage{lastpage} # references # of headers
+  - \usepackage{dcolumn} # uses array package to define a "D" column
+  - \usepackage{natbib}\bibliographystyle{agsm} # biography support
+  - \usepackage[nottoc, numbib]{tocbibind} # adds bibliography to TOC  # numbib numbers bibliograpy
+bibliography: bibliography.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE)
+```
+
+\allsectionsfont{\centering}
+\subsectionfont{\raggedright}
+\subsubsectionfont{\raggedright}
+
+\pagenumbering{gobble}  
+
+\begin{centering}
+\vspace{3cm} 
+
+\vspace{1cm}
+
+\Large
+{\bf Golden Triangle Land Services, Inc.}
+
+\Large
+{\bf Limited Title Report}
+
+```{r uni_logo, echo=F, out.width="20%"}
+knitr::include_graphics("img/GTLS_Logo.png")
+```
+
+
+\vspace{1cm}
+
+\Large
+
+\doublespacing
+{\bf COMPARISON OF TOP-DOWN AND BOTTOM-UP APPROACHES ON SPECIFIC LEAF AREA PATTERNS, \\AT GLOBAL, LATITUDINAL, AND BIOME SCALES} 
+
+\vspace{1 cm}
+
+\normalsize
+\singlespacing
+By
+
+\vspace{0.5 cm}
+
+\Large
+
+{\bf Robert C. Cline, Sr., M.A., CPL}
+
+\vspace{1.5 cm}
+
+{\bf Captioned Lands} 
+\\in partial fulfilment of the requirement \\for the degree of BSc with Honours \\in Ecological and Environmental Sciences
+
+\vspace{1.5 cm}
+
+\normalsize
+04 22
+\end{centering} 
+
+ 
+
+\newpage
+
+\pagenumbering{gobble}
+
+\begin{centering}
+
+{\bf Abstract}
+
+\end{centering}
+
+\spacing{1.5}
+
+(the spacing is set to 1.5)
+
+no more than 250 words for the abstract
+
+- a description of the research question/knowledge gap – what we know and what we don’t know
+- how your research has attempted to fill this gap
+- a brief description of the methods
+- brief results
+- key conclusions that put the research into a larger context  
+
+\pagenumbering{roman}
+
+\newpage
+
+\centering
+\raggedright
+\newpage
+\tableofcontents  
+
+\newpage
+
+```{r acknowledgments, child='acknowledgments.Rmd'}
+```
+
+\newpage
+
+```{r intro, child = 'introduction.Rmd'}
+```
+\pagenumbering{arabic}
+
+\newpage
+
+```{r methods, child = 'methods.Rmd'}
+```
+
+\newpage
+
+```{r results, child = 'results.Rmd'}
+```
+
+\newpage
+
+```{r discussion, child = 'discussion.Rmd'}
+```
+
+\newpage
+
+```{r conclusion, child = 'conclusion.Rmd'}
+```
+
+\newpage
+
+```{r biblio, child = 'bibliography.Rmd'}
+```
+
+\newpage
+
+```{r appendix, child = 'appendix.Rmd'}
+``` 
+
